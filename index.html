@@ -633,7 +633,7 @@
                 <div class="metric-label">CSVs/dia processados</div>
             </div>
             <div class="metric">
-                <div class="metric-value"><span class="counter" data-target="6">0</span></div>
+                <div class="metric-value"><span class="counter" data-target="7">0</span></div>
                 <div class="metric-label">dashboards em produção</div>
             </div>
         </div>
@@ -984,6 +984,107 @@
                             <span class="badge">Streamlit</span>
                             <span class="badge">Plotly</span>
                             <span class="badge">Cohort Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7: Normas Regulamentadoras -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(239,68,68,0.1);">&#9878;</div>
+                    <div class="project-info">
+                        <h3>Inteligência Regulatória</h3>
+                        <p class="project-tagline">254+ normas, 9 reguladores, assistente IA com RAG</p>
+                        <div class="project-badges">
+                            <span class="badge">Web Scraping</span>
+                            <span class="badge">Claude AI</span>
+                            <span class="badge amber">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Necessidade de monitorar e analisar normas regulatórias financeiras brasileiras de múltiplos órgãos (BCB, CMN, CVM, ANBIMA, COAF, ANPD), com centenas de documentos, relacionamentos complexos entre normas e obrigações de compliance dispersas.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Extractors dedicados com BeautifulSoup para 6 fontes regulatórias + monitoramento do Diário Oficial da União (DOU) via parsing de JSON embarcado em HTML. Banco SQLite com 254+ normas, 75+ obrigações e 78 relacionamentos (altera, revoga, complementa, regulamenta). Dashboard Streamlit 11 páginas: visão geral, filtros por regulador/tema, grafo de relacionamentos com Plotly, calendário regulatório, busca inteligente multi-campo, novidades DOU e assistente IA com RAG (Claude Haiku/Sonnet) para consultas em linguagem natural. Autenticação bcrypt com RBAC e logging em Google Sheets. Pipeline semanal via GitHub Actions.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Plataforma completa de inteligência regulatória cobrindo 18 temas (PLD/FT, PIX, LGPD, Fundos, Cybersecurity, etc.) com atualização semanal automatizada e assistente IA para consultas contextuais.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">254+ normas</span>
+                            <span class="project-number">9 reguladores</span>
+                            <span class="project-number">75+ obrigações</span>
+                            <span class="project-number">78 relacionamentos</span>
+                            <span class="project-number">18 temas</span>
+                            <span class="project-number">11 páginas</span>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">BeautifulSoup</span>
+                            <span class="badge">SQLite</span>
+                            <span class="badge">Claude AI (RAG)</span>
+                            <span class="badge">Streamlit</span>
+                            <span class="badge">Plotly</span>
+                            <span class="badge">bcrypt</span>
+                            <span class="badge">GitHub Actions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: RPAs & Automações -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(34,197,94,0.1);">&#9881;</div>
+                    <div class="project-info">
+                        <h3>RPAs & Automações</h3>
+                        <p class="project-tagline">30+ automações em pipelines diários e semanais</p>
+                        <div class="project-badges">
+                            <span class="badge">Python</span>
+                            <span class="badge">GitHub Actions</span>
+                            <span class="badge amber">RPA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Múltiplos processos manuais e repetitivos em diferentes projetos: coleta de dados de 7 plataformas de mídia, monitoramento de normas regulatórias, consulta a APIs governamentais, geocodificação de empresas, extração de dados de data warehouses e notificações operacionais.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Desenvolvimento de 30+ RPAs/automações distribuídos em 6 projetos: <strong>7 extractors de mídia digital</strong> (Google Ads OAuth2/MCC, Meta 8 contas com cursor pagination e backoff exponencial, TikTok REST v1.3, GA4, Search Console, Business Profile, Orgânico) gerando 57+ CSVs/dia. <strong>6 web scrapers regulatórios</strong> com BeautifulSoup (BCB, CMN, CVM, ANBIMA, COAF) + monitoramento do DOU via parsing JSON. <strong>8+ extractors de APIs governamentais</strong> (BCB OLINDA, BcBase, SGS, ANTT/CKAN, ANP, BigQuery, CGU, PNCP) com rate limiting adaptativo. <strong>Geocodificação em 3 níveis</strong> com fallback automático (Nominatim &rarr; AwesomeAPI &rarr; IBGE) processando 89.511 empresas. <strong>Extração Snowflake</strong> via PEM key-pair (7 tabelas). <strong>Consolidação cross-platform</strong> com normalização de métricas e motor de recomendações. <strong>Notificações WhatsApp</strong> via gateway Baileys self-hosted. Tudo orquestrado via GitHub Actions com <code>continue-on-error</code>, timeouts configuráveis e pipelines diários/semanais.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Eliminação de horas de trabalho manual diário. Pipelines 100% automatizados com monitoramento, retry com backoff, cache inteligente e notificações em tempo real. Dados sempre atualizados sem intervenção humana.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">30+ automações</span>
+                            <span class="project-number">57+ CSVs/dia</span>
+                            <span class="project-number">25+ APIs</span>
+                            <span class="project-number">89.511 empresas</span>
+                            <span class="project-number">6 projetos</span>
+                            <span class="project-number">3 pipelines CI/CD</span>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">Python</span>
+                            <span class="badge">BeautifulSoup</span>
+                            <span class="badge">REST APIs</span>
+                            <span class="badge">OAuth2</span>
+                            <span class="badge">GitHub Actions</span>
+                            <span class="badge">Snowflake</span>
+                            <span class="badge">BigQuery</span>
+                            <span class="badge">WhatsApp</span>
                         </div>
                     </div>
                 </div>
