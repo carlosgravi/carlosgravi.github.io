@@ -914,11 +914,11 @@
                     <div class="project-icon" style="background: rgba(168,85,247,0.1);">&#129504;</div>
                     <div class="project-info">
                         <h3>Perfil do Cliente</h3>
-                        <p class="project-tagline">ML para segmentação comportamental de clientes</p>
+                        <p class="project-tagline">3 modelos ML, 254K clientes, R$ 554M em transações</p>
                         <div class="project-badges">
-                            <span class="badge">scikit-learn</span>
-                            <span class="badge">K-Means</span>
-                            <span class="badge amber">ML</span>
+                            <span class="badge">XGBoost</span>
+                            <span class="badge">Snowflake</span>
+                            <span class="badge amber">ML Preditivo</span>
                         </div>
                     </div>
                 </div>
@@ -927,23 +927,34 @@
                     <div class="project-details-inner">
                         <div class="star-section">
                             <h4>Situação</h4>
-                            <p>Base de clientes do programa AJFans sem segmentação inteligente para campanhas e decisões de mix de lojistas.</p>
+                            <p>511K clientes no programa AJFans e 1,66M+ transações (R$ 554M) nos 6 shoppings, sem segmentação inteligente, previsão de churn nem estimativa de lifetime value para direcionar campanhas.</p>
                         </div>
                         <div class="star-section">
                             <h4>Ação</h4>
-                            <p>Pipeline de consolidação de dados transacionais. Feature engineering: frequência, recência, valor gasto, categorias preferidas, horários, shopping preferido. Modelo K-Means com segmentação RFV. Dashboard com visualização de clusters e perfis comportamentais. Integração com dados de campanhas para medir efetividade por segmento.</p>
+                            <p>Pipeline Snowflake (PEM key-pair) com 1,66M+ transações e 254K clientes. Feature engineering com 30+ features (spending, frequência, diversidade, engajamento, CLV, coorte). <strong>3 modelos preditivos:</strong> Churn (XGBoost, AUC 0.9992, com correção de data leakage), LTV (XGBoost Regressor R² 0.93 + Classifier Bronze/Prata/Ouro/Diamante), RFV Supervisionado (Random Forest, F1 0.99). <strong>4 métodos de segmentação RFV</strong> (Faixas de Valor, Quintis, Guiado, K-Means). 14 personas comportamentais. 10 ações recomendadas derivadas dos modelos (Retenção Urgente a Manutenção). Dashboard Streamlit 20 páginas com assistente IA (RAG BM25 + Claude API). Segmentações integradas ao Salesforce para e-mail e push personalizados.</p>
                         </div>
                         <div class="star-section">
                             <h4>Resultado</h4>
-                            <p>Perfis distintos de clientes identificados, permitindo campanhas segmentadas e decisões data-driven sobre mix de lojistas.</p>
+                            <p>Plataforma de analytics cobrindo 254K clientes e R$ 554M. Modelos preditivos alimentando ações recomendadas por prioridade. 14 personas e 4 métodos de segmentação integrados ao Salesforce para campanhas personalizadas por comportamento e valor.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">254K clientes</span>
+                            <span class="project-number">R$ 554M</span>
+                            <span class="project-number">1,66M+ transações</span>
+                            <span class="project-number">AUC 0.9992</span>
+                            <span class="project-number">R² 0.93</span>
+                            <span class="project-number">14 personas</span>
+                            <span class="project-number">20 páginas</span>
                         </div>
                         <div class="project-stack">
-                            <span class="badge">Python</span>
-                            <span class="badge">scikit-learn</span>
+                            <span class="badge">XGBoost</span>
+                            <span class="badge">Random Forest</span>
                             <span class="badge">K-Means</span>
-                            <span class="badge">RFV</span>
-                            <span class="badge">Pandas</span>
+                            <span class="badge">scikit-learn</span>
+                            <span class="badge">Snowflake</span>
+                            <span class="badge">Claude AI (RAG)</span>
                             <span class="badge">Streamlit</span>
+                            <span class="badge">Salesforce</span>
                         </div>
                     </div>
                 </div>
