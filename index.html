@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Gravi — Engenheiro de Dados</title>
+    <meta name="description" content="Portfólio de Carlos Gravi, Engenheiro de Dados. Do dado bruto à decisão estratégica — projeto, construo e entrego end-to-end.">
+    <meta property="og:title" content="Carlos Gravi — Engenheiro de Dados">
+    <meta property="og:description" content="Do dado bruto à decisão estratégica — projeto, construo e entrego end-to-end.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { color: #06b6d4; text-decoration: none; transition: color 0.2s; }
+        a:hover { color: #22d3ee; }
+
+        /* ========== UTILITIES ========== */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #f8fafc;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+        }
+        .accent { color: #06b6d4; }
+        .accent-amber { color: #f59e0b; }
+        section { padding: 5rem 0; }
+
+        /* ========== SCROLL REVEAL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== NAV ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #f8fafc;
+        }
+        nav .logo span { color: #06b6d4; }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+        }
+        nav ul li a {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover { color: #f8fafc; }
+
+        /* Mobile hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #94a3b8;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ========== HERO ========== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 1.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            overflow: hidden;
+            border: 3px solid rgba(6,182,212,0.3);
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+        }
+        .hero-role {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #06b6d4;
+            margin-bottom: 1rem;
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* Animated counters */
+        .hero-metrics {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .metric {
+            text-align: center;
+        }
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+        .metric-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 0.2rem;
+        }
+
+        /* Social links */
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .hero-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(148,163,184,0.2);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+        .hero-links a:hover {
+            border-color: #06b6d4;
+            color: #06b6d4;
+            background: rgba(6,182,212,0.05);
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: #06b6d4;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cta-btn:hover {
+            background: #22d3ee;
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(6,182,212,0.3);
+        }
+
+        /* ========== ABOUT ========== */
+        #about { background: #0f172a; }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-text p {
+            color: #cbd5e1;
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .about-text strong { color: #f8fafc; }
+        .competency-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .competency-card {
+            background: #1e293b;
+            border: 1px solid rgba(148,163,184,0.1);
+            border-radius: 10px;
+            padding: 1.2rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .competency-card:hover {
+            border-color: rgba(6,182,212,0.3);
+            transform: translateY(-2px);
+        }
+        .competency-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .competency-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .competency-card p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* ========== PROJECTS ========== */
+        #projects { background: linear-gradient(180deg, #0f172a 0%, #0c1322 100%); }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: #1e293b;
+            border: 1px solid rgba(148,163,184,0.1);
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            border-color: rgba(6,182,212,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .project-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .project-info { flex: 1; }
+        .project-info h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .project-tagline {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+        }
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            background: rgba(6,182,212,0.1);
+            color: #06b6d4;
+            border: 1px solid rgba(6,182,212,0.2);
+        }
+        .badge.amber {
+            background: rgba(245,158,11,0.1);
+            color: #f59e0b;
+            border-color: rgba(245,158,11,0.2);
+        }
+        .project-expand-hint {
+            padding: 0 1.5rem 1rem;
+            font-size: 0.78rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-card.expanded .project-details {
+            max-height: 800px;
+        }
+        .project-details-inner {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid rgba(148,163,184,0.1);
+        }
+        .star-section { margin-top: 1rem; }
+        .star-section h4 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #06b6d4;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+        .star-section p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+        .project-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .project-number {
+            background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.15);
+            border-radius: 8px;
+            padding: 0.4rem 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: #f59e0b;
+        }
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 1rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        /* ========== STACK ========== */
+        #stack { background: #0f172a; }
+        .stack-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+        .stack-category {
+            background: #1e293b;
+            border: 1px solid rgba(148,163,184,0.1);
+            border-radius: 12px;
+            padding: 1.3rem;
+        }
+        .stack-category h4 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.8rem;
+        }
+        .stack-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .stack-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            background: rgba(6,182,212,0.08);
+            color: #06b6d4;
+            border: 1px solid rgba(6,182,212,0.15);
+            transition: all 0.2s;
+        }
+        .stack-badge:hover {
+            background: rgba(6,182,212,0.15);
+            transform: translateY(-1px);
+        }
+
+        /* ========== EXPERIENCE ========== */
+        #experience { background: linear-gradient(180deg, #0f172a 0%, #0c1322 100%); }
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #06b6d4, rgba(6,182,212,0.1));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: -2rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #06b6d4;
+            transform: translateX(-5px);
+            border: 2px solid #0f172a;
+        }
+        .timeline-item.current .timeline-dot {
+            box-shadow: 0 0 0 4px rgba(6,182,212,0.2);
+        }
+        .timeline-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: #06b6d4;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-company {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .timeline-role {
+            font-size: 0.92rem;
+            color: #f59e0b;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-desc {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* ========== FOOTER / CONTACT ========== */
+        #contact {
+            background: #0c1322;
+            border-top: 1px solid rgba(148,163,184,0.08);
+            padding: 4rem 0 2.5rem;
+        }
+        .contact-content { text-align: center; }
+        .contact-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .contact-content .subtitle {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid rgba(148,163,184,0.2);
+            border-radius: 10px;
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            transition: all 0.2s;
+        }
+        .contact-link:hover {
+            border-color: #06b6d4;
+            color: #06b6d4;
+            background: rgba(6,182,212,0.05);
+            transform: translateY(-2px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(148,163,184,0.06);
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            nav ul.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.97);
+                backdrop-filter: blur(12px);
+                padding: 1rem 1.5rem;
+                gap: 0.8rem;
+                border-bottom: 1px solid rgba(148,163,184,0.1);
+            }
+            .hamburger { display: flex; }
+            .hero-name { font-size: 2.2rem; }
+            .hero-role { font-size: 1.1rem; }
+            .hero-metrics { gap: 1.5rem; }
+            .metric-value { font-size: 1.6rem; }
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.6rem; }
+            .stack-categories { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .hero-name { font-size: 1.8rem; }
+            .hero-metrics { gap: 1rem; }
+            .competency-grid { grid-template-columns: 1fr; }
+            .stack-categories { grid-template-columns: 1fr; }
+            section { padding: 3.5rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav>
+    <div class="container">
+        <div class="logo">&lt;<span>CG</span>/&gt;</div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul id="navMenu">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#stack">Stack</a></li>
+            <li><a href="#experience">Experiência</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="hero">
+    <div>
+        <div class="hero-photo" id="heroPhoto">CG</div>
+        <h1 class="hero-name">Carlos Gravi</h1>
+        <p class="hero-role">Engenheiro de Dados</p>
+        <p class="hero-tagline">Do dado bruto à decisão estratégica &mdash; projeto, construo e entrego end-to-end.</p>
+
+        <div class="hero-metrics">
+            <div class="metric">
+                <div class="metric-value"><span class="counter" data-target="25">0</span>+</div>
+                <div class="metric-label">APIs integradas</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value"><span class="counter" data-target="57">0</span>+</div>
+                <div class="metric-label">CSVs/dia processados</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value"><span class="counter" data-target="6">0</span></div>
+                <div class="metric-label">dashboards em produção</div>
+            </div>
+        </div>
+
+        <div class="hero-links">
+            <a href="https://github.com/carlosgravi" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+            </a>
+            <a href="https://linkedin.com/in/carlosgravi" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+            </a>
+            <a href="mailto:carlos.gravi@outlook.com">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Email
+            </a>
+        </div>
+
+        <a href="#projects" class="cta-btn">
+            Ver Projetos
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about">
+    <div class="container">
+        <div class="reveal">
+            <h2 class="section-title">Sobre mim</h2>
+            <p class="section-subtitle">Perfil hands-on end-to-end</p>
+        </div>
+        <div class="about-content reveal">
+            <div class="about-text">
+                <p>
+                    Engenheiro de Dados com trajetória em <strong>cooperativismo financeiro</strong> (Cresol), <strong>indústria</strong> (FIESC) e <strong>varejo/shopping centers</strong> (Almeida Júnior). Combino engenharia de dados com visão de negócio &mdash; construo pipelines que conectam dados brutos a decisões estratégicas.
+                </p>
+                <p>
+                    Na Almeida Júnior, criei do zero toda a infraestrutura de dados de marketing digital: pipeline com 7 extractors processando 57+ CSVs diariamente, gerador de landing pages com IA, dashboards com validação automatizada conectados a Snowflake, e modelos de ML para segmentação de clientes.
+                </p>
+                <p>
+                    <strong class="accent">Meu diferencial:</strong> projeto, construo, automatizo e entrego end-to-end &mdash; da extração de APIs ao dashboard na mão do stakeholder.
+                </p>
+            </div>
+            <div class="competency-grid">
+                <div class="competency-card">
+                    <div class="icon">&#9881;</div>
+                    <h4>Data Engineering</h4>
+                    <p>Pipelines ETL/ELT, APIs REST, rate limiting, backoff, orquestração diária</p>
+                </div>
+                <div class="competency-card">
+                    <div class="icon">&#9729;</div>
+                    <h4>Cloud & DW</h4>
+                    <p>Snowflake, BigQuery, Databricks, dbt, PySpark</p>
+                </div>
+                <div class="competency-card">
+                    <div class="icon">&#9889;</div>
+                    <h4>ML & IA</h4>
+                    <p>Claude AI, scikit-learn, K-Means, detecção de anomalias (3&sigma;)</p>
+                </div>
+                <div class="competency-card">
+                    <div class="icon">&#9881;</div>
+                    <h4>DevOps & CI/CD</h4>
+                    <p>GitHub Actions, self-hosted runners, Docker, automação WhatsApp</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PROJECTS ========== -->
+<section id="projects">
+    <div class="container">
+        <div class="reveal">
+            <h2 class="section-title">Projetos</h2>
+            <p class="section-subtitle">Clique para expandir e ver detalhes de cada projeto</p>
+        </div>
+        <div class="projects-grid">
+
+            <!-- Project 1: Media Monitoring -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(6,182,212,0.1);">&#128202;</div>
+                    <div class="project-info">
+                        <h3>Dashboard Media Monitoring</h3>
+                        <p class="project-tagline">7 APIs, 57+ CSVs/dia, 12 páginas, 36+ tabs</p>
+                        <div class="project-badges">
+                            <span class="badge">Python</span>
+                            <span class="badge">GitHub Actions</span>
+                            <span class="badge amber">7 APIs Ads</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Grupo de 6 shoppings investindo em 7 plataformas de mídia digital sem visão consolidada. Marketing gastava horas cruzando dados manualmente, sem comparação cross-platform.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>7 extractors independentes (Google Ads OAuth2/MCC, Meta 8 contas com cursor pagination, TikTok REST v1.3, GA4, Search Console, Business Profile, Orgânico). Orquestração via GitHub Actions diário com <code>continue-on-error</code>. Consolidação cross-platform com normalização de métricas. Motor de recomendações INCREASE/MAINTAIN/DECREASE. Dashboard Streamlit 12 páginas com detecção de anomalias (2&sigma;), modelo O2O, autenticação bcrypt e notificações WhatsApp.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Pipeline processando 57+ CSVs diariamente. Pela primeira vez a empresa comparou plataformas de forma justa e otimizou distribuição de orçamento com dados reais.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">7 APIs</span>
+                            <span class="project-number">57+ CSVs/dia</span>
+                            <span class="project-number">12 páginas</span>
+                            <span class="project-number">36+ tabs</span>
+                            <span class="project-number">8 contas Meta</span>
+                            <span class="project-number">20+ secrets</span>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">OAuth2</span>
+                            <span class="badge">REST APIs</span>
+                            <span class="badge">Streamlit</span>
+                            <span class="badge">Plotly</span>
+                            <span class="badge">bcrypt</span>
+                            <span class="badge">WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: LandFlow -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(245,158,11,0.1);">&#9889;</div>
+                    <div class="project-info">
+                        <h3>LandFlow</h3>
+                        <p class="project-tagline">Landing pages com IA em minutos, não semanas</p>
+                        <div class="project-badges">
+                            <span class="badge">Claude AI</span>
+                            <span class="badge">Streamlit</span>
+                            <span class="badge amber">IA Generativa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Equipe de marketing dependia de agência externa para landing pages &mdash; semanas de lead time, custo alto, sem controle de dados de leads.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Arquitetura JSON-first: Claude AI gera configuração estruturada (cores, tipografia, seções, campos) que alimenta template builder determinístico com framework CSS/JS de 600+ linhas. 3 modelos de IA disponíveis. 6 identidades visuais por shopping. Publicação one-click via GitHub Pages. LGPD automático. Segurança multi-camada: bcrypt, rate limiting IP, RBAC, sessões com expiração. Captura de leads via Google Apps Script.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Criação de landing pages reduzida de semanas para minutos. Marketing autônomo para criar, publicar e monitorar leads sem dependência de TI.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">3 modelos IA</span>
+                            <span class="project-number">6 identidades visuais</span>
+                            <span class="project-number">600+ linhas CSS/JS</span>
+                            <span class="project-number">4 camadas segurança</span>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">Claude AI</span>
+                            <span class="badge">PyGithub</span>
+                            <span class="badge">GitHub Pages</span>
+                            <span class="badge">bcrypt</span>
+                            <span class="badge">RBAC</span>
+                            <span class="badge">LGPD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Promoções Report -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(99,102,241,0.1);">&#128202;</div>
+                    <div class="project-info">
+                        <h3>Promoções Report</h3>
+                        <p class="project-tagline">Snowflake + 25 testes de validação automatizados</p>
+                        <div class="project-badges">
+                            <span class="badge">Snowflake</span>
+                            <span class="badge">Pandas</span>
+                            <span class="badge amber">Data Quality</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>6 shoppings com promoções frequentes e sistema de cupons/fidelidade (AJFans), mas acompanhamento manual e sujeito a erros. Inconsistências só eram descobertas após gerar relatórios errados.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Extração direta do Snowflake via PEM key-pair (7 tabelas BRONZE). 25+ testes em 7 categorias: estrutura de arquivos, hierarquia de datas, aritmética de segmentação, série temporal, resgates, agregação e detecção de anomalias 3&sigma;. Dashboard 4 abas com KPIs, séries temporais 60 dias, resgates e painel de validação. Pipeline diário via GitHub Actions com notificações WhatsApp.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Visibilidade em tempo real com garantia de qualidade. Detecção proativa de anomalias antes que impactassem relatórios da diretoria.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">7 tabelas Snowflake</span>
+                            <span class="project-number">25+ testes</span>
+                            <span class="project-number">7 categorias</span>
+                            <span class="project-number">6 shoppings</span>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">Snowflake</span>
+                            <span class="badge">PEM key-pair</span>
+                            <span class="badge">Pandas</span>
+                            <span class="badge">Streamlit</span>
+                            <span class="badge">Plotly</span>
+                            <span class="badge">WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Transpocred -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(16,185,129,0.1);">&#127758;</div>
+                    <div class="project-info">
+                        <h3>Dashboard Transpocred</h3>
+                        <p class="project-tagline">8+ APIs governamentais, 89.511 empresas geocodificadas</p>
+                        <div class="project-badges">
+                            <span class="badge">APIs Gov</span>
+                            <span class="badge">Folium</span>
+                            <span class="badge amber">Geocodificação</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Cooperativa de crédito precisava de inteligência competitiva usando dados públicos do Banco Central, ANTT, ANP, Receita Federal e órgãos de compliance &mdash; APIs instáveis, mal documentadas e com schemas mutáveis.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Integração de 8+ APIs (BCB OLINDA/IF.data, BcBase v2, SGS, ANTT/CKAN, ANP, BigQuery/basedosdados, CGU, PNCP). Cache inteligente JSON com fallback. Geocodificação em 3 níveis (Nominatim &rarr; AwesomeAPI CEP &rarr; IBGE centroide) processando 89.511 empresas com 100% de cobertura. Mapas Folium com CircleMarker e FastMarkerCluster. 12 páginas de dashboard.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Dashboard completo de inteligência competitiva com pipeline semanal automatizado. 12 páginas cobrindo dados financeiros, regulatórios, geográficos e compliance.</p>
+                        </div>
+                        <div class="project-numbers">
+                            <span class="project-number">8+ APIs</span>
+                            <span class="project-number">89.511 empresas</span>
+                            <span class="project-number">100% cobertura</span>
+                            <span class="project-number">12 páginas</span>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">BCB OLINDA</span>
+                            <span class="badge">BigQuery</span>
+                            <span class="badge">Folium</span>
+                            <span class="badge">Streamlit</span>
+                            <span class="badge">GitHub Actions</span>
+                            <span class="badge">Geocoding</span>
+                        </div>
+                        <a href="https://github.com/carlosgravi/dashboard-produtos-cooperativa" target="_blank" rel="noopener" class="project-link" onclick="event.stopPropagation();">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            Ver repositório
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Perfil do Cliente -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(168,85,247,0.1);">&#129504;</div>
+                    <div class="project-info">
+                        <h3>Perfil do Cliente</h3>
+                        <p class="project-tagline">ML para segmentação comportamental de clientes</p>
+                        <div class="project-badges">
+                            <span class="badge">scikit-learn</span>
+                            <span class="badge">K-Means</span>
+                            <span class="badge amber">ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Base de clientes do programa AJFans sem segmentação inteligente para campanhas e decisões de mix de lojistas.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Pipeline de consolidação de dados transacionais. Feature engineering: frequência, recência, valor gasto, categorias preferidas, horários, shopping preferido. Modelo K-Means com segmentação RFV. Dashboard com visualização de clusters e perfis comportamentais. Integração com dados de campanhas para medir efetividade por segmento.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Perfis distintos de clientes identificados, permitindo campanhas segmentadas e decisões data-driven sobre mix de lojistas.</p>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">Python</span>
+                            <span class="badge">scikit-learn</span>
+                            <span class="badge">K-Means</span>
+                            <span class="badge">RFV</span>
+                            <span class="badge">Pandas</span>
+                            <span class="badge">Streamlit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Shopping Relacionamento -->
+            <div class="project-card reveal" onclick="toggleCard(this)">
+                <div class="project-header">
+                    <div class="project-icon" style="background: rgba(251,146,60,0.1);">&#127942;</div>
+                    <div class="project-info">
+                        <h3>Shopping Relacionamento</h3>
+                        <p class="project-tagline">KPIs de programa de fidelidade para 6 shoppings</p>
+                        <div class="project-badges">
+                            <span class="badge">Streamlit</span>
+                            <span class="badge">Plotly</span>
+                            <span class="badge amber">Cohort</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-expand-hint">&#9660; Clique para detalhes</div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <div class="star-section">
+                            <h4>Situação</h4>
+                            <p>Programa de relacionamento AJFans gerava dados de transações, pontuação e engajamento, mas sem visão consolidada para a gestão.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Ação</h4>
+                            <p>Consolidação de dados transacionais. KPIs de engajamento: base ativa, frequência, ticket médio, pontos resgatados. Análise de cohort e retenção. Segmentação por shopping e período.</p>
+                        </div>
+                        <div class="star-section">
+                            <h4>Resultado</h4>
+                            <p>Gestão do programa baseada em dados, com visibilidade de quais ações geravam mais engajamento.</p>
+                        </div>
+                        <div class="project-stack">
+                            <span class="badge">Python</span>
+                            <span class="badge">Pandas</span>
+                            <span class="badge">Streamlit</span>
+                            <span class="badge">Plotly</span>
+                            <span class="badge">Cohort Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== STACK ========== -->
+<section id="stack">
+    <div class="container">
+        <div class="reveal">
+            <h2 class="section-title">Stack Técnica</h2>
+            <p class="section-subtitle">Tecnologias que uso no dia a dia</p>
+        </div>
+        <div class="stack-categories reveal">
+            <div class="stack-category">
+                <h4>Linguagens</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Python</span>
+                    <span class="stack-badge">SQL</span>
+                    <span class="stack-badge">JavaScript</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>Data Warehouses</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Snowflake</span>
+                    <span class="stack-badge">BigQuery</span>
+                    <span class="stack-badge">Databricks</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>Transformação</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">dbt</span>
+                    <span class="stack-badge">PySpark</span>
+                    <span class="stack-badge">Pandas</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>Orquestração</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Airflow</span>
+                    <span class="stack-badge">Apache NiFi</span>
+                    <span class="stack-badge">Prefect</span>
+                    <span class="stack-badge">GitHub Actions</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>Visualização</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Streamlit</span>
+                    <span class="stack-badge">Plotly</span>
+                    <span class="stack-badge">Folium</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>APIs & Integrações</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Google Ads</span>
+                    <span class="stack-badge">Meta Ads</span>
+                    <span class="stack-badge">TikTok Ads</span>
+                    <span class="stack-badge">GA4</span>
+                    <span class="stack-badge">BCB OLINDA</span>
+                    <span class="stack-badge">ANTT/CKAN</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>IA & ML</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Claude AI</span>
+                    <span class="stack-badge">scikit-learn</span>
+                    <span class="stack-badge">K-Means</span>
+                    <span class="stack-badge">Anomaly Detection</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>Infra & Segurança</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Docker</span>
+                    <span class="stack-badge">GitHub Pages</span>
+                    <span class="stack-badge">bcrypt</span>
+                    <span class="stack-badge">OAuth2</span>
+                    <span class="stack-badge">RBAC</span>
+                </div>
+            </div>
+            <div class="stack-category">
+                <h4>ETL/ELT</h4>
+                <div class="stack-items">
+                    <span class="stack-badge">Pentaho</span>
+                    <span class="stack-badge">Airbyte</span>
+                    <span class="stack-badge">Custom Extractors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== EXPERIENCE ========== -->
+<section id="experience">
+    <div class="container">
+        <div class="reveal">
+            <h2 class="section-title">Experiência</h2>
+            <p class="section-subtitle">Trajetória profissional em dados</p>
+        </div>
+        <div class="timeline reveal">
+            <div class="timeline-item current">
+                <div class="timeline-dot"></div>
+                <div class="timeline-period">mar 2025 &mdash; presente</div>
+                <div class="timeline-company">Almeida Junior Shopping Centers</div>
+                <div class="timeline-role">Data Analyst SR</div>
+                <p class="timeline-desc">
+                    Atuação técnica e estratégica em Data Analytics com foco em dados do App AJFANS, MKT e CRM. Pipelines automatizados com Python e PySpark, web scraping para coleta recorrente de dados externos. Modelagem analítica em PostgreSQL e Snowflake com dbt. Orquestração com Airflow, Prefect e NiFi, integração de fontes via Airbyte em ambiente AWS. Dashboards em Power BI e Streamlit com métricas de aquisição, engajamento, retenção e monetização. Segmentações RFV, clusterização e definição de personas integradas ao Salesforce para campanhas personalizadas.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-period">ago 2022 &mdash; dez 2024 &middot; 2 anos 5 meses</div>
+                <div class="timeline-company">FIESC &mdash; Federação das Indústrias de SC</div>
+                <div class="timeline-role">Analista de Dados Pleno</div>
+                <p class="timeline-desc">
+                    Desenvolvimento de produtos e projetos para o Observatório FIESC: relatórios em R e PySpark, dashboards Power BI, atualização de indicadores. Ferramentas: RStudio, Databricks, Azure DevOps. Desenvolvimento de chatbot para executivos, PO da Plataforma Faros, PO do projeto Alexa integrada com Databricks, e automatização de painéis Power BI.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-period">jun 2022 &mdash; ago 2022 &middot; 3 meses</div>
+                <div class="timeline-company">Cresol</div>
+                <div class="timeline-role">Analista de Teste / QA</div>
+                <p class="timeline-desc">
+                    QA em projetos de implementação e integração Salesforce. Testes funcionais, integrados e de regressão com BDD/Cucumber. Validação de APIs REST via Swagger/OpenAPI. Análise de dados e consistência em PostgreSQL entre sistemas integrados.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-period">set 2021 &mdash; jun 2022 &middot; 10 meses</div>
+                <div class="timeline-company">Cresol</div>
+                <div class="timeline-role">Analista de Service Desk III</div>
+                <p class="timeline-desc">
+                    Gestão de demandas do pilar de crédito. Operações em PostgreSQL, Topdesk e ITSM GsTI. Diagnóstico e resolução de falhas técnicas, análise de dados de suporte, implementação de melhorias em processos e elaboração de materiais de treinamento.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-content reveal">
+            <h2>Vamos conversar?</h2>
+            <p class="subtitle">Disponível para novos desafios em Engenharia de Dados</p>
+            <div class="contact-links">
+                <a href="https://github.com/carlosgravi" target="_blank" rel="noopener" class="contact-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    github.com/carlosgravi
+                </a>
+                <a href="https://linkedin.com/in/carlosgravi" target="_blank" rel="noopener" class="contact-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    linkedin.com/in/carlosgravi
+                </a>
+                <a href="mailto:carlos.gravi@outlook.com" class="contact-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    carlos.gravi@outlook.com
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Carlos Gravi. Construído com HTML, CSS e JS puros.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // ========== SCROLL REVEAL ==========
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ========== COUNTER ANIMATION ==========
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target);
+                const duration = 1500;
+                const start = performance.now();
+                const animate = (now) => {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.round(target * eased);
+                    if (progress < 1) requestAnimationFrame(animate);
+                };
+                requestAnimationFrame(animate);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // ========== NAV SCROLL EFFECT ==========
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ========== MOBILE MENU ==========
+    function toggleMenu() {
+        document.getElementById('navMenu').classList.toggle('open');
+    }
+    document.querySelectorAll('#navMenu a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('navMenu').classList.remove('open');
+        });
+    });
+
+    // ========== EXPAND PROJECT CARDS ==========
+    function toggleCard(card) {
+        const wasExpanded = card.classList.contains('expanded');
+        document.querySelectorAll('.project-card.expanded').forEach(c => c.classList.remove('expanded'));
+        if (!wasExpanded) card.classList.add('expanded');
+    }
+
+    // ========== HERO PHOTO: load real image or show initials ==========
+    (function() {
+        const photo = document.getElementById('heroPhoto');
+        const img = new Image();
+        img.onload = function() {
+            photo.innerHTML = '';
+            photo.appendChild(img);
+        };
+        img.src = 'assets/foto.jpg';
+    })();
+</script>
+
+</body>
+</html>
